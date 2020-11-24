@@ -1,0 +1,39 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listagem</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tabela.css' %}"/>
+</head>
+<body>
+    <a href="http://127.0.0.1:8000/admin"><button>ADMIN</button></a>
+    <a href="{% url 'url_nova' %}"><button>NOVA TRANSAÇÃO</button></a>
+   <div class="table-users">
+   <div class="header">Transações</div>
+
+   <table cellspacing="0">
+      <tr>
+         <th>Nome</th>
+         <th>Data</th>
+         <th>Valor</th>
+         <th>Categoria</th>
+         <th width="230">Observações</th>
+      </tr>
+
+      {% for transacao in transacoes %}
+            <tr>
+               <td><a href="{% url 'url_update' transacao.id %}"> {{ transacao.descricao }} </a></td>
+               <td>{{ transacao.data }} </td>
+               <td>{{ transacao.valor }} </td>
+               <td>{{ transacao.categoria }} </td>
+               <td>{{ transacao.observacoes }} </td>
+            </tr>
+      {% endfor %}
+   </table>
+</div>
+</body>
+</html>
